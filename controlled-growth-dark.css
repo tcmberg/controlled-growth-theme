@@ -1,0 +1,291 @@
+/*
+ * Controlled Growth Theme — Dark Mud Variant
+ * Warm, earthy dark aesthetic with brown accents and frosted glass panels
+ * Not black — rich soil tones that are easy on the eyes
+ * Companion to the light Controlled Growth theme
+ *
+ * Usage: @import 'controlled-growth-dark.css';
+ *        Add class="cg-theme cg-dark" to your <body> or root container.
+ *        Or use class="cg-dark" standalone.
+ */
+
+/* ============================================================
+   1. CSS Custom Properties (Design Tokens) — Dark Mud Override
+   ============================================================ */
+
+.cg-dark,
+:root.cg-dark {
+  /* --- Brand Accents (warmed for dark backgrounds) --- */
+  --cg-green:       #6BAF7A;
+  --cg-red:         #D46B6B;
+  --cg-yellow:      #C49A3C;
+  --cg-purple:      #B898D8;
+
+  /* --- Backgrounds (rich earth tones, never black) --- */
+  --cg-bg:          #28231E;
+  --cg-surface:     rgba(55, 47, 38, 0.65);
+  --cg-card:        rgba(48, 40, 32, 0.7);
+
+  /* --- Text (light to dim — warm cream tones) --- */
+  --cg-text:        #E2D9CE;
+  --cg-text-muted:  #B5A898;
+  --cg-text-dim:    #887A6A;
+
+  /* --- Borders & Dividers --- */
+  --cg-border:      rgba(226, 217, 206, 0.08);
+
+  /* --- Accent (warm clay/mud) --- */
+  --cg-accent:      #B08860;
+  --cg-accent-dim:  rgba(176, 136, 96, 0.4);
+  --cg-accent-bg:   rgba(176, 136, 96, 0.10);
+
+  /* --- Semantic Colors (softened for dark bg) --- */
+  --cg-success:     #6BAF7A;
+  --cg-warning:     #C49A3C;
+  --cg-error:       #D46B6B;
+  --cg-support:     var(--cg-green);
+  --cg-oppose:      var(--cg-red);
+  --cg-unsure:      var(--cg-yellow);
+
+  /* --- Entity Type Colors (adjusted brightness) --- */
+  --cg-entity-component:  #8B9E7A;
+  --cg-entity-person:     #E06060;
+  --cg-entity-concept:    #4AC070;
+  --cg-entity-org:        #D4A040;
+
+  /* --- Shadows (warmer, slightly stronger on dark) --- */
+  --cg-shadow-sm:   0 1px 3px rgba(10, 8, 5, 0.20);
+  --cg-shadow-md:   0 4px 12px rgba(10, 8, 5, 0.25);
+
+  /* --- Decorative --- */
+  --cg-petal:       #4A3F34;
+}
+
+
+/* ============================================================
+   2. Base Styles Override
+   ============================================================ */
+
+.cg-dark {
+  background: var(--cg-bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  color: var(--cg-text);
+}
+
+.cg-dark ::selection {
+  background: rgba(176, 136, 96, 0.25);
+  color: var(--cg-text);
+}
+
+
+/* ============================================================
+   3. Cards — hover border brightens with warm tone
+   ============================================================ */
+
+.cg-dark .cg-card:hover {
+  border-color: rgba(226, 217, 206, 0.14);
+}
+
+.cg-dark .cg-msg-card::before {
+  background: linear-gradient(90deg, transparent, var(--cg-accent-bg), transparent);
+}
+
+.cg-dark .cg-msg-card:hover {
+  border-color: rgba(226, 217, 206, 0.14);
+}
+
+.cg-dark .cg-summary-card {
+  border-color: rgba(176, 136, 96, 0.2);
+}
+
+
+/* ============================================================
+   4. Buttons — adjusted hover states
+   ============================================================ */
+
+.cg-dark .cg-btn:hover {
+  background: rgba(226, 217, 206, 0.08);
+  color: var(--cg-accent);
+  border-color: var(--cg-accent-dim);
+}
+
+.cg-dark .cg-btn--green:hover {
+  background: rgba(107, 175, 122, 0.10);
+  border-color: rgba(107, 175, 122, 0.3);
+}
+
+.cg-dark .cg-btn--red:hover {
+  background: rgba(212, 107, 107, 0.10);
+  border-color: rgba(212, 107, 107, 0.3);
+}
+
+.cg-dark .cg-btn--yellow:hover {
+  background: rgba(196, 154, 60, 0.10);
+  border-color: rgba(196, 154, 60, 0.3);
+}
+
+.cg-dark .cg-link {
+  background: rgba(176, 136, 96, 0.12);
+  color: var(--cg-accent);
+}
+
+
+/* ============================================================
+   5. Badges — tinted for dark backgrounds
+   ============================================================ */
+
+.cg-dark .cg-badge--support {
+  background: rgba(107, 175, 122, 0.14);
+  color: var(--cg-green);
+  border-color: rgba(107, 175, 122, 0.25);
+}
+
+.cg-dark .cg-badge--oppose {
+  background: rgba(212, 107, 107, 0.14);
+  color: var(--cg-red);
+  border-color: rgba(212, 107, 107, 0.25);
+}
+
+.cg-dark .cg-badge--unsure {
+  background: rgba(196, 154, 60, 0.14);
+  color: var(--cg-yellow);
+  border-color: rgba(196, 154, 60, 0.25);
+}
+
+
+/* ============================================================
+   6. Topbar — dark frosted glass
+   ============================================================ */
+
+.cg-dark .cg-topbar {
+  background: rgba(40, 35, 30, 0.88);
+}
+
+
+/* ============================================================
+   7. Pipeline
+   ============================================================ */
+
+.cg-dark .cg-pipeline {
+  background: var(--cg-bg);
+}
+
+.cg-dark .cg-pipeline-step.active .cg-pipeline-dot {
+  box-shadow: 0 0 8px var(--cg-accent-dim);
+}
+
+
+/* ============================================================
+   8. Tooltip — dark frosted
+   ============================================================ */
+
+.cg-dark .cg-tooltip {
+  background: rgba(40, 35, 30, 0.95);
+  color: var(--cg-text);
+}
+
+
+/* ============================================================
+   9. Legend — dark frosted
+   ============================================================ */
+
+.cg-dark .cg-legend {
+  background: rgba(40, 35, 30, 0.90);
+}
+
+
+/* ============================================================
+   10. Form Inputs
+   ============================================================ */
+
+.cg-dark .cg-input {
+  background: rgba(40, 35, 28, 0.6);
+  color: var(--cg-text);
+  border-color: var(--cg-border);
+}
+
+.cg-dark .cg-input:focus {
+  border-color: var(--cg-accent-dim);
+  box-shadow: 0 0 0 3px var(--cg-accent-bg);
+}
+
+.cg-dark .cg-input::placeholder {
+  color: var(--cg-text-dim);
+}
+
+
+/* ============================================================
+   11. Scrollbar
+   ============================================================ */
+
+.cg-dark ::-webkit-scrollbar-thumb {
+  background: rgba(226, 217, 206, 0.12);
+}
+
+.cg-dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(226, 217, 206, 0.22);
+}
+
+
+/* ============================================================
+   12. HUD Corner Brackets — warm dark tones
+   ============================================================ */
+
+.cg-dark .cg-hud-corners::before {
+  border-top-color: rgba(226, 217, 206, 0.12);
+  border-left-color: rgba(226, 217, 206, 0.12);
+}
+
+.cg-dark .cg-hud-corners::after {
+  border-top-color: rgba(226, 217, 206, 0.12);
+  border-right-color: rgba(226, 217, 206, 0.12);
+}
+
+.cg-dark .cg-hud-corners__bottom::before {
+  border-bottom-color: rgba(226, 217, 206, 0.08);
+  border-left-color: rgba(226, 217, 206, 0.08);
+}
+
+.cg-dark .cg-hud-corners__bottom::after {
+  border-bottom-color: rgba(226, 217, 206, 0.08);
+  border-right-color: rgba(226, 217, 206, 0.08);
+}
+
+
+/* ============================================================
+   13. Mention Tags
+   ============================================================ */
+
+.cg-dark .cg-mention {
+  background: rgba(176, 136, 96, 0.12);
+  color: var(--cg-accent);
+}
+
+
+/* ============================================================
+   14. Summary Grid
+   ============================================================ */
+
+.cg-dark .cg-summary-stat {
+  background: rgba(40, 35, 28, 0.5);
+}
+
+
+/* ============================================================
+   15. Layout Mode Switcher
+   ============================================================ */
+
+.cg-dark .cg-layout-modes {
+  background: rgba(48, 40, 32, 0.7);
+}
+
+.cg-dark .cg-layout-modes button:hover {
+  background: rgba(226, 217, 206, 0.08);
+  color: var(--cg-text);
+}
+
+.cg-dark .cg-layout-modes button.active {
+  color: var(--cg-accent);
+  background: var(--cg-accent-bg);
+}

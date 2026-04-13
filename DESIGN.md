@@ -186,6 +186,7 @@ const CG_CANVAS = {
 
 ## Quick Start
 
+### Light Theme
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="controlled-growth.css">
@@ -202,3 +203,86 @@ const CG_CANVAS = {
   <input class="cg-input" placeholder="Type here...">
 </body>
 ```
+
+### Dark Mud Theme
+```html
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="controlled-growth.css">
+<link rel="stylesheet" href="controlled-growth-dark.css">
+<body class="cg-theme cg-dark">
+  <!-- Same markup — the cg-dark class switches all colors -->
+</body>
+```
+
+---
+
+## Dark Mud Variant
+
+The dark variant (`controlled-growth-dark.css`) provides a warm, earthy alternative. Not black — rich soil and clay tones that reduce eye strain.
+
+### Dark Color Palette
+
+#### Brand Accents (softened for dark backgrounds)
+| Token | Light | Dark | Notes |
+|-------|-------|------|-------|
+| `--cg-green` | `#27A85A` | `#6BAF7A` | Softer, less saturated |
+| `--cg-red` | `#E05C5C` | `#D46B6B` | Warmer red |
+| `--cg-yellow` | `#B07D10` | `#C49A3C` | Brighter to read on dark |
+| `--cg-purple` | `#c084fc` | `#B898D8` | Muted lavender |
+
+#### Backgrounds
+| Token | Value | Notes |
+|-------|-------|-------|
+| `--cg-bg` | `#28231E` | Deep warm brown — like rich soil |
+| `--cg-surface` | `rgba(55, 47, 38, 0.65)` | Semi-transparent mud brown |
+| `--cg-card` | `rgba(48, 40, 32, 0.7)` | Slightly lighter earth |
+
+#### Text (light to dim — warm cream tones)
+| Token | Hex | Notes |
+|-------|-----|-------|
+| `--cg-text` | `#E2D9CE` | Warm parchment/cream |
+| `--cg-text-muted` | `#B5A898` | Muted tan |
+| `--cg-text-dim` | `#887A6A` | Dim brown |
+
+#### Accent (warm clay replaces green)
+| Token | Value | Notes |
+|-------|-------|-------|
+| `--cg-accent` | `#B08860` | Warm clay/mud — the signature color |
+| `--cg-accent-dim` | `rgba(176, 136, 96, 0.4)` | Hover borders, glow |
+| `--cg-accent-bg` | `rgba(176, 136, 96, 0.10)` | Active fills, highlights |
+
+### Dark Canvas / Visualization Colors
+
+```javascript
+const CG_CANVAS_DARK = {
+  component: '#8B9E7A',
+  person:    '#E06060',
+  concept:   '#4AC070',
+  org:       '#D4A040',
+  reply:     '#6BAF7A',
+  entity:    '#8B9E7A',
+  tension:   '#B898D8',
+  label:     '#E2D9CE',
+  labelFont: '500 11px IBM Plex Sans, sans-serif',
+  bg:        '#28231E',
+  glow:      'radial-gradient(ellipse, rgba(176,136,96,0.04), transparent 70%)',
+  branch:    'rgba(226,217,206,0.10-0.16)',
+  selected:  '#B08860',
+};
+```
+
+### Dark Frosted Glass
+```css
+/* Panels */
+background: rgba(55, 47, 38, 0.65);
+backdrop-filter: blur(12px);
+
+/* Topbar */
+background: rgba(40, 35, 30, 0.88);
+backdrop-filter: blur(8px);
+```
+
+### Dark Shadows
+Stronger than light variant to register on dark surfaces:
+- Small: `0 1px 3px rgba(10, 8, 5, 0.20)`
+- Medium: `0 4px 12px rgba(10, 8, 5, 0.25)`
